@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/19 22:24:55 by manmaria          #+#    #+#             */
+/*   Updated: 2025/01/19 22:27:14 by manmaria         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_print_reverse_alphabet(void)
@@ -5,6 +17,9 @@ void	ft_print_reverse_alphabet(void)
 	char	c;
 
 	c = 'z';
-	while (c-- >= 'a')
+	while (c >= 'a')
+	{
 		write(1, &c, 1);
+		c--;
+	}
 }
