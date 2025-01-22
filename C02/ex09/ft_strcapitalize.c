@@ -45,7 +45,7 @@ char	*ft_strcapitalize(char *str)
 	{
 		if (ft_islow(str[0]) || (ft_symb(str[i - 1]) && ft_islow(str[i])))
 			str[i] -= 32;
-		else if (ft_iscap(str[i]) && (ft_islow(str[i - 1]) || ft_iscap(str[i - 1])))
+		else if (ft_iscap(str[i]) && (ft_islow(str[i - 1]) || ft_iscap(str[i - 1]) || (str[i - 1] >= '0' && str[i - 1] <= '9')))
 			str[i] += 32;
 		else
 			i++;

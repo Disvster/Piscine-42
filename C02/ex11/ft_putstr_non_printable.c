@@ -37,8 +37,8 @@ void	ft_putstr_non_printable(char *str)
 		else
 		{
 			ft_putchar('\\');
-			ft_putchar("0123456789abcdef"[str[i] / 16]);
-			ft_putchar("0123456789abcdef"[str[i] % 16]);
+			ft_putchar("0123456789abcdef"(unsigned char)[str[i] / 16]);
+			ft_putchar("0123456789abcdef"(unsigned char)[str[i] % 16]);
 		}
 		i++;
 	}
