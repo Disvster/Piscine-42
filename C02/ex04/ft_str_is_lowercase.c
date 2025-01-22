@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/19 22:25:38 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/19 22:25:46 by manmaria         ###   ########.fr       */
+/*   Created: 2025/01/19 02:33:12 by manmaria          #+#    #+#             */
+/*   Updated: 2025/01/19 02:34:08 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_is_negative(int n)
+int	ft_str_is_lowercase(char *str)
 {
-	if (n >= 0)
-		write(1, "P", 1);
-	else
-		write(1, "N", 1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] < 'a' || str[i] > 'z'))
+			return (0);
+		i++;
+	}
+	return (1);
 }
