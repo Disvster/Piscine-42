@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:41:11 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/20 17:39:22 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:33:29 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ char	*ft_strcapitalize(char *str)
 	{
 		if (ft_islow(str[0]) || (ft_symb(str[i - 1]) && ft_islow(str[i])))
 			str[i] -= 32;
-		else if (ft_iscap(str[i]) && (ft_islow(str[i - 1]) || ft_iscap(str[i - 1]) || (str[i - 1] >= '0' && str[i - 1] <= '9')))
+		else if (ft_iscap(str[i]) && (ft_islow(str[i - 1]) || ft_iscap(str[i - 1])
+				|| (str[i - 1] >= '0' && str[i - 1] <= '9')))
 			str[i] += 32;
 		else
 			i++;

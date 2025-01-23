@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:16:18 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/20 19:44:56 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:33:54 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_putstr_non_printable(char *str)
 		else
 		{
 			ft_putchar('\\');
-			ft_putchar("0123456789abcdef"(unsigned char)[str[i] / 16]);
-			ft_putchar("0123456789abcdef"(unsigned char)[str[i] % 16]);
+			ft_putchar("0123456789abcdef"[(unsigned char)str[i] / 16]);
+			ft_putchar("0123456789abcdef"[(unsigned char)str[i] % 16]);
 		}
 		i++;
 	}

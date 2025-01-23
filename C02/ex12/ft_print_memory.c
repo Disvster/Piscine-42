@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_memory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/22 11:34:24 by manmaria          #+#    #+#             */
+/*   Updated: 2025/01/22 19:50:06 by manmaria         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_putchar(char h)
@@ -7,10 +19,10 @@ void	ft_putchar(char h)
 
 void	ft_hexa_address(unsigned long long addr)
 {
-	if (addr > '9')
+	if (addr > 16)
 	{
 		ft_hexa_address(addr / 16);
-		ft_hexa_address(addr % 16);
+		ft_hexa_address(addr % 16); 
 	}
 	else
 		ft_putchar("0123456789abcdef"[addr]);
@@ -72,6 +84,6 @@ void	*ft_print_memory(void *addr, unsigned int size)
 int	main(void) 
 {
 	char	*str = "Bonjour les aminches\t\n\tc. est fou\btout\bce qu on peut faire avec\n\n\nprint_memory\t\n..lol\tlol\n \t";
-	int	size = 90;
+	int	size = 89;
 	ft_print_memory(str, size);
 }
