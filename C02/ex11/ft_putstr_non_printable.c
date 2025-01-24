@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:16:18 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/22 11:33:54 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/24 20:20:02 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_putstr_non_printable(char *str)
 		i++;
 	}
 }
-/*
+
 int	main(void)
 {
 	ft_putstr_non_printable("Coucou\ntu vas bien");
@@ -51,4 +51,4 @@ int	main(void)
 	ft_putstr_non_printable("Coucou tu vas bie\t\v\0n");
 	ft_putchar('\n');
 	ft_putstr_non_printable("");
-}*/
+}
