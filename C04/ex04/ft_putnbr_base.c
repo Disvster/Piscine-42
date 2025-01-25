@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 20:19:17 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/24 22:49:13 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:15:28 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	verify_base(char *str)
 		iv = (int)str[i];
 		if (verify[iv] == 1)
 			return (0);
-		if ((str[i] >= 32 && str[i] <= 127) || (str[i] != '+' && str[i] != '-'))
+		if ((str[i] > 32 && str[i] < 127) || (str[i] != '+' && str[i] != '-'))
 			verify[iv]++;
 		i++;
 	}
@@ -47,22 +47,24 @@ int	verify_base(char *str)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	len_base;
+	long	nb;
 
+	nb = nbr;
 	len_base = ft_strlen(base);
 	if (len_base == 0 || len_base == 1 || !verify_base(base))
 		return ;
-	if (nbr < 0)
+	if (nb < 0)
 	{
 		ft_putchar('-');
-		ft_putnbr_base((-nbr), base);
+		nb *= -1;
 	}
-	else if (nbr >= len_base)
+	if (nb >= len_base)
 	{
-		ft_putnbr_base((nbr / len_base), base);
-		ft_putnbr_base((nbr % len_base), base);
+		ft_putnbr_base((nb / len_base), base);
+		ft_putnbr_base((nb % len_base), base);
 	}
 	else
-		ft_putchar(base[nbr]);
+		ft_putchar(base[nb]);
 }
 /*
 #include <stdio.h>
@@ -75,7 +77,6 @@ int	main(int ac, char **av)
 		 ft_putchar('\n');
 	}
 	else{
-		printf("burro da merda escreve duas 
-				strings tipo um numero e uma base\n");
+		printf("burro da merda escreve duas strings tipo um numero e uma base\n");
 	}
 }*/

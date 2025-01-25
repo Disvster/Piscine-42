@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:45:54 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/23 21:06:15 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/25 16:24:25 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_atoi(char *str)
 	while (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign = -1;
+			sign *= -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
@@ -39,7 +39,7 @@ int	ft_atoi(char *str)
 #include <stdlib.h>
 int	main(int ac, char **av)
 {
-	//(ac)void;
+	(void)ac;
 
 	printf("ft_atoi = %d\n", ft_atoi(av[1]));
 	printf("atoi = %d\n", atoi(av[1]));
