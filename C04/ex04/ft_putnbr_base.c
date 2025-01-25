@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 20:19:17 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/25 17:15:28 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:36:30 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	verify_base(char *str)
 	while (str[i])
 	{
 		iv = (int)str[i];
-		if (verify[iv] == 1)
+		if (verify[iv] == 1 || str[i] == '+' || str[i] == '-')
 			return (0);
-		if ((str[i] > 32 && str[i] < 127) || (str[i] != '+' && str[i] != '-'))
+		if (str[i] > 32 && str[i] < 127)
 			verify[iv]++;
 		i++;
 	}
@@ -46,8 +46,8 @@ int	verify_base(char *str)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	len_base;
 	long	nb;
+	int		len_base;
 
 	nb = nbr;
 	len_base = ft_strlen(base);
@@ -77,6 +77,6 @@ int	main(int ac, char **av)
 		 ft_putchar('\n');
 	}
 	else{
-		printf("burro da merda escreve duas strings tipo um numero e uma base\n");
+		printf("escreve duas strings, um numero e uma base\n");
 	}
 }*/
