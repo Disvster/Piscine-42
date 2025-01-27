@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 20:19:17 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/25 22:36:30 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:16:24 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	verify_base(char *str)
 	while (str[i])
 	{
 		iv = (int)str[i];
-		if (verify[iv] == 1 || str[i] == '+' || str[i] == '-')
+		if (verify[iv] == 1 || str[i] == '+' || str[i] == '-' 
+				|| str[i] == ' ' || str[i] == 127)
 			return (0);
 		if (str[i] > 32 && str[i] < 127)
 			verify[iv]++;

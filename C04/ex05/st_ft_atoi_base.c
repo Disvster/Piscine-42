@@ -1,16 +1,14 @@
- (str[i] != '+' && str[i] != '-')/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stress_test_ft_putnbr_base.c                       :+:      :+:    :+:   */
+/*   st_ft_atoi_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/24 20:19:17 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/25 22:33:23 by manmaria         ###   ########.fr       */
+/*   Created: 2025/01/24 22:51:47 by manmaria          #+#    #+#             */
+/*   Updated: 2025/01/27 13:48:12 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	ft_strlen(char *str)
 {
@@ -22,11 +20,6 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_putchar(char n)
-{
-	write(1, &n, 1);
-}
-
 int	verify_base(char *str)
 {
 	auto int i, iv;
@@ -35,7 +28,7 @@ int	verify_base(char *str)
 	while (str[i])
 	{
 		iv = (int)str[i];
-		if (verify[iv] == 1 || (str[i] == '+' || str[i] == '-'))
+		if (verify[iv] == 1 || str[i] == '+' || str[i] == '-')
 			return (0);
 		if ((str[i] > 32 && str[i] < 127))
 			verify[iv]++;
@@ -44,32 +37,66 @@ int	verify_base(char *str)
 	return (1);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	nb_base(char base_char, char *base)
 {
-	int	len_base;
-	long	nb;
+	int	ib;
 
-	nb = nbr;
-	len_base = ft_strlen(base);
-	if (len_base == 0 || len_base == 1 || !verify_base(base))
-		return ;
-	if (nb < 0)
+	ib = 0;
+	while (base[ib])
 	{
-		ft_putchar('-');
-		nb *= -1;
+		if (base_char == base[ib])
+			return (ib);
+		ib++;
 	}
-	if (nb >= len_base)
+	return (-1);
+}
+
+int	negative(char *str, int *ptr_i)
+{
+	int	ni;
+	int	sign;
+
+	ni = 0;
+	sign = 1;
+	while ((str[ni] >= 9 && str[ni] <= 14) || str[ni] == 32)
+		ni++;
+	while (str[ni] == '+' || str[ni] == '-')
 	{
-		ft_putnbr_base((nb / len_base), base);
-		ft_putnbr_base((nb % len_base), base);
+		if (str[ni] == '-')
+			sign *= -1;
+		ni++;
 	}
-	else
-		ft_putchar(base[nb]);
+	*ptr_i = ni;
+	return (sign);
+}
+
+int	ft_atoi_base(char *str, char *base)
+{
+	int	i;
+	int	res;
+	int	sign;
+	int	base_len;
+	int	ib2;
+
+	sign = 1;
+	i = 0;
+	res = 0;
+	base_len = ft_strlen(base);
+	if (base_len == 1 || base_len == 0 || !verify_base(base))
+		return (0);
+	sign = negative(str, &i);
+	ib2 = nb_base(str[i], base);
+	while (str[i] && ib2 != -1)
+	{
+		res = (res * base_len) + ib2;
+		i++;
+		ib2 = nb_base(str[i], base);
+	}
+	return (res * sign);
 }
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
 #include <string.h>
 #define BUFF_SIZE 1024
 // Macros for ANSI color codes
@@ -81,6 +108,7 @@ void	ft_putnbr_base(int nbr, char *base)
 #define MAGENTA_TEXT "\033[35m"
 #define CYAN_TEXT "\033[36m"
 #define WHITE_TEXT "\033[37m"
+#include <fcntl.h>
 
 
 int main(int ac, char **av)
@@ -114,7 +142,7 @@ int main(int ac, char **av)
                 if (sscanf(line, "%11s %99s", num, base) == 2) 
                 {
                     printf("\t-> num:"RED_TEXT "%s\t" RESET_COLOR " base:" BLUE_TEXT "%s" RESET_COLOR, num, base);
-                    ft_putnbr_base(atoi(num), base);
+                    ft_atoi_base(num, base);
                     printf("\n");
                 }
                 else
