@@ -6,7 +6,7 @@
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 20:45:54 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/25 16:24:25 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:57:12 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	ft_atoi(char *str)
 	}
 	return (res * sign);
 }
+
+"    \t  ---+4354abc12"
 /*
 #include <stdio.h>
 #include <stdlib.h>

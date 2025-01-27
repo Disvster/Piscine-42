@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 19:19:54 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/27 19:38:16 by manmaria         ###   ########.fr       */
+/*   Created: 2025/01/27 16:32:52 by manmaria          #+#    #+#             */
+/*   Updated: 2025/01/27 16:36:37 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ int	main(int argc, char **argv)
 	int	i;
 	int	j;
 
-	(void)argc;
 	i = 0;
-	j = 1;
-	while (argv[j])
+	j = argc - 1;
+	while (j > 0)
 	{
 		while (argv[j][i])
 		{
@@ -29,7 +28,7 @@ int	main(int argc, char **argv)
 		}
 		i = 0;
 		write(1, "\n", 1);
-		j++;
+		j--;
 	}
 	return (0);
 }
