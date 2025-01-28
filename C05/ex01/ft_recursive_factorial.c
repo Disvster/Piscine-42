@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 20:02:16 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/28 20:05:48 by manmaria         ###   ########.fr       */
+/*   Created: 2025/01/28 15:49:49 by manmaria          #+#    #+#             */
+/*   Updated: 2025/01/28 20:00:54 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+int	ft_recursive_factorial(int nb)
 {
-	int	n;
-
-	n = nb;
 	if (nb < 0)
 		return (0);
 	if (nb <= 1)
 		return (1);
-	while (--n > 0)
-		nb *= n;
-	return (nb);
+	else
+		return (nb * ft_recursive_factorial(nb - 1));
 }
 /*
 #include <stdio.h>
@@ -29,5 +25,5 @@ int	ft_iterative_factorial(int nb)
 int	main(int ac, char **av)
 {
 	(void)ac;
-	printf("%d\n", ft_iterative_factorial(atoi(av[1])));
+	printf("%d\n", ft_recursive_factorial(atoi(av[1])));
 }*/

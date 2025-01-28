@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 20:02:16 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/28 20:05:48 by manmaria         ###   ########.fr       */
+/*   Created: 2025/01/28 20:47:48 by manmaria          #+#    #+#             */
+/*   Updated: 2025/01/28 22:01:19 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+int	ft_fibonacci(int index)
 {
-	int	n;
-
-	n = nb;
-	if (nb < 0)
-		return (0);
-	if (nb <= 1)
-		return (1);
-	while (--n > 0)
-		nb *= n;
-	return (nb);
+	if (index < 0)
+		return (-1);
+	if (index < 2)
+		return (index);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }
 /*
 #include <stdio.h>
@@ -29,5 +24,5 @@ int	ft_iterative_factorial(int nb)
 int	main(int ac, char **av)
 {
 	(void)ac;
-	printf("%d\n", ft_iterative_factorial(atoi(av[1])));
+	printf("%d\n", ft_fibonacci(atoi(av[1])));
 }*/
