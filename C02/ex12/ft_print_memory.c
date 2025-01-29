@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_memory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manmaria <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:34:24 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/22 19:50:06 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:40:36 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	ft_putchar(char h);
+
+void	ft_hexa_address(unsigned long long addr);
+
+void	ft_print_spaces(int n_spaces);
+
+void	ft_bones(unsigned char *str, unsigned int size);
+
+void	*ft_print_memory(void *addr, unsigned int size);
 
 void	ft_putchar(char h)
 {
@@ -80,10 +90,10 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	ft_bones((unsigned char *)addr, size);
 	return (addr);
 }
-
+/*
 int	main(void) 
 {
 	char	*str = "Bonjour les aminches\t\n\tc. est fou\btout\bce qu on peut faire avec\n\n\nprint_memory\t\n..lol\tlol\n \t";
 	int	size = 89;
 	ft_print_memory(str, size);
-}
+}*/
