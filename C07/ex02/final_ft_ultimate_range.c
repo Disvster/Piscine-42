@@ -1,59 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fds_ft_ultimate_range.c                            :+:      :+:    :+:   */
+/*   final_ft_ultimate_range.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manmaria <manmaria@student.42porto.co      +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 22:34:30 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/29 23:32:07 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/01/30 17:23:46 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// faz isto sem criar *arr, faz malloc de *range; while *range[i++] = min++; 
 #include <stdlib.h>
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
-	int	*arr;
 	int	size;
 
 	size = max - min;
 	i = 0;
+	*range = NULL;
 	if (min >= max)
-	{
-		*range = NULL;
 		return (0);
-	}
-	arr = (int *)malloc(sizeof(int) * size);
-	*range = arr;
+	*range = (int *)malloc(sizeof(int) * size);
+	if (!*range)
+		return (-1);
 	while (i < size)
 	{
-		arr[i] = min;
-		min++;
+		range[0][i] = min + i;
 		i++;
 	}
-	if (i != size)
-		return (-1);
 	return (size);
 }
 
 #include <stdio.h>
-int	main()
-{
+int	main(int ac, char **av)
+{	// in ft_ult_rang; insid the while loop
+       	// you could you could (*range)[i] instead
+
 	int	i;
-	int	*arr;
+	int	**arr = (int **)malloc(sizeof(int *));
 	int	size;
 
+	(void)ac;
 	i = 0;
-	size = ft_ultimate_range(&arr, 2, 5);
+	size = ft_ultimate_range(arr, av[1], av[2]);
 	while (i < size)
 	{
-		printf("%d ", arr[i]);
+		printf("%d ", arr[0][i]);
 		i++;
 	}
 	printf("\nsize = %d\n", size);
-//	free (arr);
+	free (arr[0]);
+	free (arr);
 	return (0);
 }
