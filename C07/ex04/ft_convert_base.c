@@ -6,47 +6,11 @@
 /*   By: manmaria <manmaria@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:51:33 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/30 23:06:20 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/03 20:26:55 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-int	ft_strlen(char *str);
-int	verify_base(char *base);
-int	ws_sign(char *str, int sign, int *p_i);
-int	nbr_base(char symb, char *base);
-int	ft_atoi_base(char *str, char *base, int *pnbr_sign);
-void	ft_putnbr_base(int nbr, char *base, int sign, char *new_nbr);
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
-
-#include <stdio.h>
-
-int	main(int ac, char **av)
-{
-	char	*str = ft_convert_base(av[1], av[2], av[3]);
-	
-	(void)ac;
-	str = ft_convert_base(av[1], av[2], av[3]);
-	printf("%s\n", str);
-	free (str);
-	return(0);
-}
-
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
-{
-	int		sign;
-	int		res_atoi;
-	char	*con_bs_nbr;
-
-	sign = 0;
-	con_bs_nbr = NULL;
-	if (verify_base(base_from) <= 1 || verify_base(base_to) <= 1)
-		return (NULL);
-	res_atoi = ft_atoi_base(nbr, base_from, &sign);
-	ft_putnbr_base(res_atoi, base_to, sign, con_bs_nbr);
-	return (con_bs_nbr);
-}
 
 int	ft_strlen(char *str)
 {
@@ -115,7 +79,7 @@ int	nbr_base(char symb, char *base)
 	return (-1);
 }
 
-int	ft_atoi_base(char *str, char *base, int *pnbr_sign)
+int	ft_atoi_base(char *str, char *base)
 {
 	int	i;
 	int	res;
@@ -134,35 +98,61 @@ int	ft_atoi_base(char *str, char *base, int *pnbr_sign)
 		i++;
 		id_b = nbr_base(str[i], base); 
 	}
-	*pnbr_sign = sign;
 	return (res * sign);
 }
 
-void	ft_putnbr_base(int nbr, char *base, int sign, char *new_nbr) //sign recebe o valor do p_i da atoi
+int	len_number_to(int res_atoi, int len_base_to)
 {
-	long			nb;
-	int		len_base;
-	char	*temp_nbr;
-		
-	nb = nbr;
-	len_base = ft_strlen(base);
-	temp_nbr = NULL;
-	if (sign == -1)
+	int		len_nbr;
+	int		res;
+
+	res = res_atoi;
+	len_nbr = 0;
+	if (res < 0)
 	{
-		temp_nbr = (char *)malloc(sizeof(char));
-		*temp_nbr= '-';
-		temp_nbr++;
+		res *= -1;
+		len_nbr++;
 	}
-	if (nb >= len_base)
-	{	
-		ft_putnbr_base((nb / len_base), base, 1, new_nbr);
-		ft_putnbr_base((nb % len_base), base, 1, new_nbr);
+	while (res >= len_base_to)
+	{
+		res = res / len_base_to;
+		len_nbr++;
 	}
-	else 
-	{	//iterative malloc?
-		temp_nbr = (char *)malloc(sizeof(char));
-		*temp_nbr = base[nb];
-		temp_nbr++;
+	len_nbr++;
+	return (len_nbr);
+}
+
+char	*ft_putnbr_base(int nb, char *base)
+{
+	int		i;
+	int		len_nbr;
+	int		len_base;
+	long	nbr;
+	char			*new_nbr;
+	
+	i = -1;
+	nbr = nb;
+	len_base = ft_strlen(base);
+	len_nbr = len_number_to(nbr, len_base);
+	new_nbr = (char *)malloc(sizeof(char) * (len_nbr + 1));
+	while (i <= len_nbr) // this might not work
+	{
+		if (nbr < 0)
+		{
+			nbr *= -1;
+			new_nbr[0] = '-';
+			i = 1;
+		}
+		if (nbr >= len_base)
+		{
+			new_nbr[len_nbr--] = base[nbr % len_base];
+			nbr /= len_base;
+		}
+		if (nbr < len_base)
+		{
+			new_nbr[i] = base[nbr];
+			i++;
+		}
 	}
-	new_nbr = temp_nbr - ft_strlen(temp_nbr);
+	return (new_nbr);
 }

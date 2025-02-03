@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 22:34:30 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/30 17:23:46 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:58:51 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	ft_ultimate_range(int **range, int min, int max)
 		return (-1);
 	while (i < size)
 	{
-		range[0][i] = min + i;
+		(*range)[i] = min + i;
 		i++;
 	}
 	return (size);
 }
-
+/*
 #include <stdio.h>
 int	main(int ac, char **av)
 {	// in ft_ult_rang; insid the while loop
@@ -44,7 +44,7 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	i = 0;
-	size = ft_ultimate_range(arr, av[1], av[2]);
+	size = ft_ultimate_range(arr, atoi(av[1]), atoi(av[2]));
 	while (i < size)
 	{
 		printf("%d ", arr[0][i]);
@@ -54,4 +54,4 @@ int	main(int ac, char **av)
 	free (arr[0]);
 	free (arr);
 	return (0);
-}
+}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manmaria <manmaria@student.42porto.co      +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:44:42 by manmaria          #+#    #+#             */
-/*   Updated: 2025/01/29 19:54:26 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:14:18 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ char	*ft_strdup(char *src)
 	char	*dest;
 
 	i = 0;
-	dest = NULL;
 	while (src[i])
 		i++;
 	dest = (char *)malloc(sizeof(char) * (i + 1));
+	if (!dest)
+		return (0);
 	i = 0;
 	while (src[i])
 	{
@@ -39,7 +40,7 @@ int	main()
 	char	*str;
 	char	*dest;
 
-	str = "ERA MATALOOOOOOOOOSS \t";
+	str = ""; //"OOOOO\t";
 	dest = ft_strdup(str);
 	printf("ft_strdup -> \"%s\"\n", dest);
 	//printf("OG strdup -> \"%s\"\n", strdup(str));
