@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:51:33 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/03 20:26:55 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:42:17 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	verify_base(char *base)
 {
 	int	i;
 	int	c;
-	int		*verify;
+	int	*verify;
 
 	i = 0;
 	c = 0;
@@ -36,8 +36,8 @@ int	verify_base(char *base)
 	while (base[i])
 	{
 		c = (int)base[i];
-		if (base[i] == ' ' || base[i] == '+' || verify[c] == 1 ||
-			(base[i] >= 9 && base[i] <= 13) || base[i] == ' ')
+		if (base[i] == ' ' || base[i] == '+' || verify[c] == 1
+			|| (base[i] >= 9 && base[i] <= 13) || base[i] == ' ')
 			return (0);
 		if (!verify[c])
 			verify[c]++;
@@ -81,11 +81,11 @@ int	nbr_base(char symb, char *base)
 
 long	ft_atoi_base(char *str, char *base)
 {
-	int	i;
-	int	sign;
-	int	id_b;
-	long		res;
-	
+	long	res;
+	int		i;
+	int		sign;
+	int		id_b;
+
 	i = 0;
 	res = 0;
 	sign = 1;
@@ -95,47 +95,7 @@ long	ft_atoi_base(char *str, char *base)
 	{
 		res = (res * ft_strlen(base)) + id_b;
 		i++;
-		id_b = nbr_base(str[i], base); 
+		id_b = nbr_base(str[i], base);
 	}
 	return (res * sign);
-}
-
-int	len_number_to(long res_atoi, int len_base_to)
-{
-	int	len_nbr;
-
-	len_nbr = 1;
-	if (res_atoi < 0)
-	{
-		res_atoi *= -1;
-		len_nbr++;
-	}
-	while (res_atoi >= len_base_to)
-	{
-		res_atoi /= len_base_to;
-		len_nbr++;
-	}	
-	return (len_nbr);
-}
-
-char	*ft_putnbr_base(long nbr, int len_nbr, char *base, char *new_nbr)
-{
-	int		i;
-	int		len_base;
-	
-	i = 0;
-	len_base = ft_strlen(base);
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		new_nbr[0] = '-';
-		i = 1;
-	}
-	new_nbr[len_nbr] = '\0';
-	while (len_nbr > i)
-	{
-		new_nbr[--len_nbr] = base[nbr % len_base];
-		nbr /= len_base;
-	}
-	return (new_nbr);
 }

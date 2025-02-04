@@ -6,25 +6,63 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:51:33 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/04 00:51:29 by disvster         ###   ########.fr       */
+/*   Updated: 2025/02/04 11:28:54 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(char *str);
-int	verify_base(char *base);
-int	ws_sign(char *str, int sign, int *p_i); //retorna -1||1 e da i p/ft_atoi
-int	nbr_base(char symb, char *base); //retorna -1(err) ou indice do symb na base
+int		ft_strlen(char *str);
+int		verify_base(char *base);
+int		ws_sign(char *str, int sign, int *p_i);
+int		nbr_base(char symb, char *base);
 long	ft_atoi_base(char *str, char *base);
-int	len_number_to(long res_atoi, int len_base_to);
-char	*ft_putnbr_base(long nbr, int len_nbr, char *base, char *new_nbr);
+
+int	len_number_to(long res_atoi, int len_base_to)
+{
+	int	len_nbr;
+
+	len_nbr = 1;
+	if (res_atoi < 0)
+	{
+		res_atoi *= -1;
+		len_nbr++;
+	}
+	while (res_atoi >= len_base_to)
+	{
+		res_atoi /= len_base_to;
+		len_nbr++;
+	}
+	return (len_nbr);
+}
+
+char	*ft_putnbr_base(long nbr, int len_nbr, char *base, char *new_nbr)
+{
+	int		i;
+	int		len_base;
+
+	i = 0;
+	len_base = ft_strlen(base);
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		new_nbr[0] = '-';
+		i = 1;
+	}
+	new_nbr[len_nbr] = '\0';
+	while (len_nbr > i)
+	{
+		new_nbr[--len_nbr] = base[nbr % len_base];
+		nbr /= len_base;
+	}
+	return (new_nbr);
+}
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	char	*con_nb;
 	int		len_nbr;
-	long			res_atoi;
+	long	res_atoi;
+	char	*con_nb;
 
 	con_nb = NULL;
 	if (verify_base(base_from) <= 1 || verify_base(base_to) <= 1)
@@ -56,3 +94,12 @@ int	main(int ac, char **av)
 	free (str);
 	return (0);
 }*/
+/*
+int	ft_strlen(char *str);
+int	verify_base(char *base);
+int	ws_sign(char *str, int sign, int *p_i); //retorna -1||1 e da i p/ft_atoi
+int	nbr_base(char symb, char *base); //retorna -1(err) ou indice do symb na base
+long	ft_atoi_base(char *str, char *base);
+int	len_number_to(long res_atoi, int len_base_to);
+char	*ft_putnbr_base(long nbr, int len_nbr, char *base, char *new_nbr);
+*/
