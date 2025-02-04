@@ -79,12 +79,12 @@ int	nbr_base(char symb, char *base)
 	return (-1);
 }
 
-int	ft_atoi_base(char *str, char *base)
+long	ft_atoi_base(char *str, char *base)
 {
 	int	i;
-	int	res;
 	int	sign;
 	int	id_b;
+	long		res;
 	
 	i = 0;
 	res = 0;
@@ -100,23 +100,19 @@ int	ft_atoi_base(char *str, char *base)
 	return (res * sign);
 }
 
-int	len_number_to(int res_atoi, int len_base_to)
+int	len_number_to(long res_atoi, int len_base_to)
 {
-	int		len_nbr;
-	int		res;
+	int	len_nbr;
 
-	res = res_atoi;
 	len_nbr = 1;
-	if (res < 0)
+	if (res_atoi < 0)
 	{
-		res *= -1;
+		res_atoi *= -1;
 		len_nbr++;
 	}
-//	if (res < len_base_to)
-//		len_nbr++;
-	while (res >= len_base_to)
+	while (res_atoi >= len_base_to)
 	{
-		res = res / len_base_to;
+		res_atoi /= len_base_to;
 		len_nbr++;
 	}	
 	return (len_nbr);
@@ -129,22 +125,17 @@ char	*ft_putnbr_base(long nbr, int len_nbr, char *base, char *new_nbr)
 	
 	i = 0;
 	len_base = ft_strlen(base);
-	while (i < len_nbr)
+	if (nbr < 0)
 	{
-		if (nbr < 0)
-		{
-			nbr *= -1;
-			new_nbr[0] = '-';
-			i = 1;
-		}
-		if (nbr >= len_base)
-		{
-			new_nbr[len_nbr--] = base[nbr % len_base];
-			nbr /= len_base;
-		}
-		if (nbr < len_base)
-			new_nbr[i++] = base[nbr];
+		nbr *= -1;
+		new_nbr[0] = '-';
+		i = 1;
 	}
-	new_nbr[ft_strlen(new_nbr)] = 0;
+	new_nbr[len_nbr] = '\0';
+	while (len_nbr > i)
+	{
+		new_nbr[--len_nbr] = base[nbr % len_base];
+		nbr /= len_base;
+	}
 	return (new_nbr);
 }
