@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:44:42 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/03 22:37:50 by disvster         ###   ########.fr       */
+/*   Updated: 2025/02/04 03:25:43 by disvster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
+/*
 #include <string.h>
 #include <stdio.h>
 int	main()
@@ -46,4 +46,4 @@ int	main()
 	//printf("OG strdup -> \"%s\"\n", strdup(str));
 	free (dest);
 	return 0;
-}
+}*/
