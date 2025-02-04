@@ -38,11 +38,20 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 #include <stdio.h>
 int	main(int ac, char **av)
 {
-	char	*str = ft_convert_base(av[1], av[2], av[3]);
+	char	*str;
 	
-	(void)ac;
+	if (ac != 4)
+	{
+		printf("usage: %s <number> <base_from> <base_to>\n")
+		return 1;
+	}
 	str = ft_convert_base(av[1], av[2], av[3]);
+	if (!str)
+	{
+		printf("error >invalid input or base(i hope)< ");
+		return 1;
+	}
 	printf("%s\n", str);
 	free (str);
-	return(0);
+	return (0);
 }
