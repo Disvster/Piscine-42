@@ -15,7 +15,7 @@
 int	ft_strlen(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i])
 		i++;
@@ -26,7 +26,7 @@ int	verify_base(char *base)
 {
 	int	i;
 	int	c;
-	int	*verify;
+	int		*verify;
 
 	i = 0;
 	c = 0;

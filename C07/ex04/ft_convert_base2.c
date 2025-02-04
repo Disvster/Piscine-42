@@ -22,10 +22,11 @@ char	*ft_putnbr_base(long nbr, int len_nbr, char *base, char *new_nbr);
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	char	*con_nb = NULL; //norm ^ check subject
+	char	*con_nb;
 	int		len_nbr;
 	long			res_atoi;
 
+	con_nb = NULL;
 	if (verify_base(base_from) <= 1 || verify_base(base_to) <= 1)
 		return (NULL);
 	res_atoi = ft_atoi_base(nbr, base_from);
@@ -34,7 +35,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	con_nb = ft_putnbr_base(res_atoi, len_nbr, base_to, con_nb);
 	return (con_nb);
 }
-
+/*
 #include <stdio.h>
 int	main(int ac, char **av)
 {
@@ -42,16 +43,16 @@ int	main(int ac, char **av)
 	
 	if (ac != 4)
 	{
-		printf("usage: %s <number> <base_from> <base_to>\n")
+		printf("usage: %s <number> <base_from> <base_to>\n", av[0]);
 		return 1;
 	}
 	str = ft_convert_base(av[1], av[2], av[3]);
 	if (!str)
 	{
-		printf("error >invalid input or base(i hope)< ");
+		printf("%s\nerror >invalid number or base(i hope)<\n", str);
 		return 1;
 	}
 	printf("%s\n", str);
 	free (str);
 	return (0);
-}
+}*/
