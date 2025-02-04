@@ -22,7 +22,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	verify_base(char *base) //returns len_base(i) or 0 if invalid base
+int	verify_base(char *base)
 {
 	int	i;
 	int	c;
@@ -39,7 +39,7 @@ int	verify_base(char *base) //returns len_base(i) or 0 if invalid base
 		if (base[i] == ' ' || base[i] == '+' || verify[c] == 1 ||
 			(base[i] >= 9 && base[i] <= 13) || base[i] == ' ')
 			return (0);
-		if (!verify[c]) //check acceptable chars
+		if (!verify[c])
 			verify[c]++;
 		i++;
 	}
@@ -84,16 +84,15 @@ int	ft_atoi_base(char *str, char *base)
 	int	i;
 	int	res;
 	int	sign;
-	int	id_b; // index of str[i] @ base
+	int	id_b;
 	
 	i = 0;
 	res = 0;
 	sign = 1;
-	sign = ws_sign(str, sign, &i); //&i to get index @ number on string
+	sign = ws_sign(str, sign, &i);
 	id_b = nbr_base(str[i], base);
 	while (str[i] && id_b != -1)
-	{	/* variable for base length?*/
-
+	{
 		res = (res * ft_strlen(base)) + id_b;
 		i++;
 		id_b = nbr_base(str[i], base); 
@@ -107,35 +106,30 @@ int	len_number_to(int res_atoi, int len_base_to)
 	int		res;
 
 	res = res_atoi;
-	len_nbr = 0;
+	len_nbr = 1;
 	if (res < 0)
 	{
 		res *= -1;
 		len_nbr++;
 	}
+//	if (res < len_base_to)
+//		len_nbr++;
 	while (res >= len_base_to)
 	{
 		res = res / len_base_to;
 		len_nbr++;
-	}
-	len_nbr++;
+	}	
 	return (len_nbr);
 }
 
-char	*ft_putnbr_base(int nb, char *base)
+char	*ft_putnbr_base(long nbr, int len_nbr, char *base, char *new_nbr)
 {
 	int		i;
-	int		len_nbr;
 	int		len_base;
-	long	nbr;
-	char			*new_nbr;
 	
-	i = -1;
-	nbr = nb;
+	i = 0;
 	len_base = ft_strlen(base);
-	len_nbr = len_number_to(nbr, len_base);
-	new_nbr = (char *)malloc(sizeof(char) * (len_nbr + 1));
-	while (i <= len_nbr) // this might not work
+	while (i < len_nbr)
 	{
 		if (nbr < 0)
 		{
@@ -149,10 +143,8 @@ char	*ft_putnbr_base(int nb, char *base)
 			nbr /= len_base;
 		}
 		if (nbr < len_base)
-		{
-			new_nbr[i] = base[nbr];
-			i++;
-		}
+			new_nbr[i++] = base[nbr];
 	}
+	new_nbr[ft_strlen(new_nbr)] = 0;
 	return (new_nbr);
 }
