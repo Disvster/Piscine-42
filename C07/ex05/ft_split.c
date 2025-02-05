@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 11:48:20 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/04 21:35:25 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/05 11:25:45 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ char	*ft_strdup(char *str, char *sep)
 	dup = (char *)malloc(sizeof(char) * (count_letters(str, sep) + 1));
 	if (!dup)
 		return (0);
-	while (!check_sep(*str, sep) && str)
+	while (!check_sep(*str, sep) && *str)
 	{
 		dup[i] = *str;
 		i++;
 		str++;
 	}
-	*dup = 0;
+	dup[i] = 0;
 	return (dup);
 }
 
@@ -96,9 +96,9 @@ char	**ft_split(char *str, char *charset)
 	new_str = NULL;
 	word_count = count_words(str, charset);
 	new_str = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (!word_count || !new_str)
+	if (!*str || !new_str)
 		return (NULL);
-	while (*str) //./a.out ".0.1.22.333.4444.55555.666666.7777777.88888888.9999999999" "." 
+	while (*str) 
 	{
 		while (check_sep(*str, charset) && *str)
 			str++;
@@ -141,6 +141,7 @@ int	main(int ac, char **av)
 			printf("\"%s\"\n", arr[i]);
 		i++;
 	}
+	free(*arr);
 	free(arr);
 	return 0;
 }
