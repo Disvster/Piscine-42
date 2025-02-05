@@ -98,7 +98,7 @@ char	**ft_split(char *str, char *charset)
 	new_str = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!word_count || !new_str)
 		return (NULL);
-	while (*str)
+	while (*str) //./a.out ".0.1.22.333.4444.55555.666666.7777777.88888888.9999999999" "." 
 	{
 		while (check_sep(*str, charset) && *str)
 			str++;
