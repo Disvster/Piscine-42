@@ -98,18 +98,19 @@ char	**ft_split(char *str, char *charset)
 	new_str = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!word_count || !new_str)
 		return (NULL);
-	while (*str)// str || *str
+	while (*str)
 	{
 		while (check_sep(*str, charset) && *str)
 			str++;
 		if (!check_sep(*str, charset) && *str)
-		{	new_str[i] = ft_strdup(str, charset);
+		{	
+			new_str[i] = ft_strdup(str, charset);
 			i++;
 		}
-		str++;
+		while (!check_sep(*str, charset) && *str)
+			str++;
 	}
 	new_str[word_count] = 0;
-	//free(*new_str);
 	return (new_str);
 }
 
