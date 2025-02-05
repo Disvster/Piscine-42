@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:39:28 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/03 15:36:30 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:06:42 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(void)
 
 	sep = " .sep. ";
 
-	f_str = ft_strjoin(0, strs, sep);
+	f_str = ft_strjoin(4, strs, sep);
 	printf("final string -> %s\n", f_str);
 	printf("strlen (f_str) -> %d\n", ft_strlen(f_str));
 	free(f_str);

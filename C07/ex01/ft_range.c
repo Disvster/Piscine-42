@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:56:05 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/03 16:20:29 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:51:48 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ int	*ft_range(int min, int max)
 	if (min >= max)
 		return (arr);
 	arr = (int *)malloc(sizeof(int) * len_arr);
+	if (!arr)
+		return (arr);
 	while (len_arr--)
-		arr[i++] = min++;
+	{
+		arr[i] = min + i;
+		i++;
+	}
 	return (arr);
 }
 /*

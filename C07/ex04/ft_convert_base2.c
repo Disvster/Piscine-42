@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 17:51:33 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/04 11:28:54 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:13:32 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	res_atoi = ft_atoi_base(nbr, base_from);
 	len_nbr = len_number_to(res_atoi, ft_strlen(base_to));
 	con_nb = (char *)malloc(sizeof(char) * (len_nbr + 1));
+	if (!con_nb)
+		return (NULL);
 	con_nb = ft_putnbr_base(res_atoi, len_nbr, base_to, con_nb);
 	return (con_nb);
 }

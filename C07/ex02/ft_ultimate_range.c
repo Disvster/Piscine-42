@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 22:34:30 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/03 16:58:51 by manmaria         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:54:01 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 #include <stdio.h>
 int	main(int ac, char **av)
 {	// in ft_ult_rang; insid the while loop
-       	// you could you could (*range)[i] instead
+       	// you could you could range[0][i] instead
 
 	int	i;
 	int	**arr = (int **)malloc(sizeof(int *));

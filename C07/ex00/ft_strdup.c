@@ -6,7 +6,7 @@
 /*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 22:44:42 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/04 03:25:43 by disvster         ###   ########.fr       */
+/*   Updated: 2025/02/05 13:52:48 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*ft_strdup(char *src)
 	char	*dest;
 
 	i = 0;
+	dest = NULL;
 	while (src[i])
 		i++;
 	dest = (char *)malloc(sizeof(char) * (i + 1));
