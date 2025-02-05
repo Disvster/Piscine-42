@@ -49,11 +49,21 @@ int	count_words(char *str, char *sep)
 int	count_letters(char *str, char *sep)
 {
 	int	i;
-
+	int	j;
+	
 	i = 0;
-	while (!check_sep(str[i], sep) && str[i])
-		i++;
-	return (i);
+	j = 0;
+	while (str[i])
+	{
+		while (check_sep(str[i], sep) && str[i])
+			i++;
+		while (!check_sep(str[i], sep) && str[i])
+		{
+			i++;
+			j++;
+		}
+	}
+	return (j);
 }
 
 char	*ft_strdup(char *str, char *sep)
@@ -72,6 +82,7 @@ char	*ft_strdup(char *str, char *sep)
 		i++;
 		str++;
 	}
+	*dup = 0;
 	return (dup);
 }
 
@@ -92,8 +103,10 @@ char	**ft_split(char *str, char *charset)
 		while (check_sep(*str, charset) && *str)
 			str++;
 		if (!check_sep(*str, charset) && *str)
-			new_str[i] = ft_strdup(str, charset); 
-		i++;
+		{	new_str[i] = ft_strdup(str, charset);
+			i++;
+		}
+		str++;
 	}
 	new_str[word_count] = 0;
 	//free(*new_str);
