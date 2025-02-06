@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manmaria <manmaria@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: manmaria <manmaria@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 11:55:38 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/06 18:31:20 by manmaria         ###   ########.fr       */
+/*   Created: 2025/02/06 17:37:22 by manmaria          #+#    #+#             */
+/*   Updated: 2025/02/06 17:40:16 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FT_ABS_H
-#define FT_ABS_H
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
-#define	ABS(Value) (Value * ((Value > 0) - (Value < 0)))
+typedef	struct	s_stock_str
+{
+	int	size;
+	char	*str;
+	char	*copy;
+}		t_stock_str;
 
 #endif
+

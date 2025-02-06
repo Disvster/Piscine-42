@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.c                                         :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manmaria <manmaria@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:16:31 by manmaria          #+#    #+#             */
-/*   Updated: 2025/02/06 12:22:16 by manmaria         ###   ########.fr       */
+/*   Created: 2025/02/06 17:37:22 by manmaria          #+#    #+#             */
+/*   Updated: 2025/02/06 17:40:16 by manmaria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
-#include <stdio.h>
-#include "ft_point.h"
-void	set_point(t_point *point)
+typedef	struct	s_stock_str
 {
-	point->x = 42;
-	point->y = 21;
-}
-int	main(void)
-{
-	t_point	point;
-	set_point(&point);
-	printf("x -> %d\ny -> %d\n", point.x, point.y);
-	return (0);
-}
+	int	size;
+	char	*str;
+	char	*copy;
+}		t_stock_str;
+
+#endif
+
