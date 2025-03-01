@@ -46,6 +46,25 @@ int	count_words(char *str, char *sep)
 	return (count);
 }
 
+int	count_wordsV2(char *str, char *sep)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		while (check_sep(str[i], sep))
+			i++;
+		if (str[i])
+			count++;
+		while (!(check_sep(str[i], sep)))
+			i++;
+	}
+	return (count);
+}
+
 int	count_letters(char *str, char *sep)
 {
 	int	i;

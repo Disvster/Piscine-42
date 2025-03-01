@@ -130,7 +130,7 @@ int main(int ac, char **av)
 
         char buf[BUFF_SIZE + 1]; 
         ssize_t bytes_read;
-        while ((bytes_read = read(fd, buf, BUFF_SIZE)) > 0)
+        while ((bytes_read = readf(fd, buf, BUFF_SIZE)) > 0)
         {
             buf[bytes_read] = '\0'; 
             char *line = strtok(buf, "\n");
